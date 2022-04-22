@@ -6,9 +6,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="Stickers">
-        <StickerComponent/>
-      </div>    
+      <StickerComponent/>
     </div>
   );
 }

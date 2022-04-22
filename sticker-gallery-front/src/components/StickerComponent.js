@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardMedia, CardActions } from '@mui/material';
+import { Card, CardMedia } from '@mui/material';
+import getSticker from '../firebase/Storage'
 
 const styles = {
     card: {
@@ -18,8 +19,8 @@ class StickerComponent extends React.Component {
             <CardMedia 
                 sx={styles.media}
                 component="img"
-                image={require ("../static/images/cards/nut.jpg")}
-                alt="nuts"
+                src={getSticker("nut.jpg")} //{require ("../static/images/cards/nut.jpg")}
+                alt="nut"
             />
         </Card>
     }
