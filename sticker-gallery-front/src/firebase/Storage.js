@@ -1,14 +1,19 @@
 import firebase from './Firebase.js'
-import { getDownloadURL, getStorage, ref } from 'firebase/storage'
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
-const storage = getStorage(firebase)
-const rootRef = ref(storage)
+function getSticker(sticker) {
 
-async function getSticker(sticker) {
-    var url = await getDownloadURL(
-        ref(rootRef, `stickers/${sticker}`)
-    )
-    return url
+    // Create a reference to the file we want to download
+    const storage = getStorage(firebase);
+    const stickerRef = ref(storage, `stickers/` + sticker);
+    
+    // Get the download URL
+    const urlPromise = getDownloadURL(stickerRef).then((url) => {
+        console.log(url)
+        return url
+    })
+
+    return urlPromise
 }
 
 export default getSticker

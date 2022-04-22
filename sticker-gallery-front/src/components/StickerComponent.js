@@ -14,12 +14,24 @@ const styles = {
 }
 
 class StickerComponent extends React.Component {
+    state = {
+        stickerName: ''
+    }
+
+    componentDidMount() {
+        getSticker('nut.jpg').then(
+            (url) => this.setState({stickerName: url})
+        )
+    }
+
     render() {
+        const { stickerName } = this.state;
+        // console.log(getSticker("nut.jpg"));
         return <Card sx={styles.card}>
             <CardMedia 
                 sx={styles.media}
                 component="img"
-                src={getSticker("nut.jpg")} //{require ("../static/images/cards/nut.jpg")}
+                src={stickerName} //{require ("../static/images/cards/nut.jpg")}
                 alt="nut"
             />
         </Card>
